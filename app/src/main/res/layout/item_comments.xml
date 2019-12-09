@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_16dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCommentTitle"
+            android:textColor="@color/colorBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiêu Đề"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCommentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:text="01/01/2019" />
+    </RelativeLayout>
+
+
+    <RatingBar
+        android:id="@+id/rbCommentRate"
+        style="?attr/ratingBarStyleSmall"
+        android:layout_marginTop="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_8dp"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dimenPaddingVertical_8dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCommentUser"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:maxLength="20"
+            android:text="Người dùng" />
+
+        <TextView
+            android:id="@+id/tvCommentConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:textColor="@color/colorGreenDark"
+            android:text="Đã mua hàng" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvCommentContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="@dimen/dimenPaddingVertical_8dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_16dp"
+        android:text="@string/largeText" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="@dimen/dimenPaddingVertical_8dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_16dp"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_16dp"
+        android:id="@+id/rcl_image_comment_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGrey" />
+
+</LinearLayout>

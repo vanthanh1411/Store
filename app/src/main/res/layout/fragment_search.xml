@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.search.SearchFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbSearching"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/smallMargin"
+                    android:layout_toStartOf="@+id/ivSearch"
+                    android:background="@drawable/change_button_find"
+                    android:drawableStart="@drawable/ic_search_black_24dp"
+                    android:drawablePadding="@dimen/mediumPadding"
+                    android:ellipsize="end"
+                    android:hint="Nhập tên sản phẩm bạn muốn tìm"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/smallPadding"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/ivSearch"
+                    android:layout_width="35dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/smallMargin"
+                    android:layout_marginEnd="@dimen/smallMargin"
+                    android:paddingEnd="@dimen/smallMargin"
+                    android:src="@drawable/ic_check_black_24dp"
+                    android:tint="@color/colorWhite" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSearchedProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tbSearching"
+            android:visibility="visible" />
+
+        <include
+            android:id="@+id/incSuggestWords"
+            layout="@layout/layout_suggestwords"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tbSearching"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/pbLoadingSearch"
+            android:visibility="gone"
+            android:elevation="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rvSearchedProduct"/>
+
+    </RelativeLayout>
+</FrameLayout>

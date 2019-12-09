@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/smallMargin"
+    android:layout_marginBottom="@dimen/smallMargin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvSuggestWord"
+        android:layout_width="wrap_content"
+        android:layout_height="35sp"
+        android:background="@drawable/bg_edittext"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:paddingStart="@dimen/mediumPadding"
+        android:paddingEnd="@dimen/mediumPadding"
+        android:text="asdasdasd"
+        tools:ignore="HardcodedText" />
+</LinearLayout>

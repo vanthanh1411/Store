@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/smallMargin"
+    android:layout_marginStart="@dimen/smallMargin"
+    android:layout_marginEnd="@dimen/smallMargin"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="@dimen/smallPadding">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/smallMargin">
+
+        <TextView
+            android:id="@+id/tvPProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/llctnQuantityPrice"
+            android:ellipsize="end"
+            android:lines="2"
+            android:text="@string/product_name"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llctnQuantityPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPProductQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/quantity"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/tvPProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/smallMargin"
+                android:text="@string/price"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llLine3"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorBlack"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/tvPProductsTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:text="@string/sum_of_money"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorGreenDark" />
+</LinearLayout>

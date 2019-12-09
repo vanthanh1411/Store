@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrey"
+    tools:context=".view.homepage.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_toolbar_find" />
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollViewContainerHome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include
+                            android:id="@+id/icl_slide_show_cateogry"
+                            layout="@layout/layout_slide_show_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <include layout="@layout/layout_view_home_screen" />
+
+                        <include layout="@layout/layout_buy_home" />
+
+                        <include layout="@layout/layout_product" />
+
+                        <ProgressBar
+                            android:id="@+id/progressbarLoadProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/smallMargin"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/orderstatus_0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/orderstatus_1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/orderstatus_2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/orderstatus_3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvOrderStatus4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:padding="@dimen/mediumPadding"
+                android:text="@string/orderstatus_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+
+            <TextView
+                android:id="@+id/tvHotLine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableStart="@drawable/ic_smartphone_black_24dp"
+                android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+                android:drawablePadding="@dimen/mediumPadding"
+                android:padding="@dimen/mediumPadding"
+                android:text="Hot Line: 0785144797" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorGrey" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

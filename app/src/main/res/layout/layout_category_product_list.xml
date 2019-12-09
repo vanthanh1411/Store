@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dimenPaddingVertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dimenPaddingVertical">
+
+        <RelativeLayout
+            android:id="@+id/rlFilterTitleBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:layout_toStartOf="@+id/btn_filter_price"
+                android:text="Sắp xếp"
+                android:textSize="@dimen/mediumText" />
+
+            <Button
+                android:id="@+id/btn_filter_price"
+                style="@android:style/Widget.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/mediumMargin"
+                android:background="@drawable/bg_button_view"
+                android:drawableStart="@drawable/ic_sort_black_24dp"
+                android:drawableTint="@color/colorWhite"
+                android:gravity="center"
+                android:paddingStart="@dimen/mediumPadding"
+                android:text="Lọc"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/mediumText" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcl_CategoryProductList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlFilterTitleBar"
+            android:layout_marginTop="@dimen/dimenPaddingVertical"
+            android:paddingLeft="@dimen/dimenPaddingVertical_8dp"
+            android:paddingRight="@dimen/dimenPaddingVertical_8dp" />
+
+        <ProgressBar
+            android:id="@+id/pb_load_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rcl_CategoryProductList"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimenPaddingVertical_16dp"
+            android:layout_marginBottom="@dimen/dimenPaddingVertical_16dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

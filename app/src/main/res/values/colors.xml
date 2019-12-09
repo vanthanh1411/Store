@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1E88E5</color>
+    <color name="colorPrimaryDark">#1565C0</color>
+    <color name="colorAccent">#448AFF</color>
+
+
+
+    <!-- ================= -->
+    <!-- BOTTOMNAVIGATIONVIEW COLOR-->
+    <!-- ================= -->
+    <color name="itemIconTint_ButtomNavigationView">#ffffff</color>
+    <color name="itemTextColor_ButtomNavigationView">#ffffff</color>
+
+    <!-- ================= -->
+    <!-- TOOLBAR FIND COLOR-->
+    <!-- ================= -->
+    <color name="tintColorImageButtonToolbar">#ffffff</color>
+    <color name="textColorTextViewToolbar">#ffffff</color>
+
+    <!-- ================= -->
+    <!-- HOMEFRAGMENT COLOR-->
+    <!-- ================= -->
+    // layout_product
+    <color name="textColorTextViewHome">#ffffff</color>
+    <color name="colorAppThemeRatingBar">#F44336</color>
+    <color name="colorChangeRatingBar">#000000</color>
+    <!---->
+    <color name="colorRedAccent">#E57373</color>
+    <color name="colorRed">#F44336</color>
+    <color name="colorRedDark">#DD2C00</color>
+    <color name="colorIcon">#9D50BB</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorOrange">#f67122</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackTransparency">#555555</color>
+    <color name="colorGreen">#00E676</color>
+    <color name="colorGreenDark">#1B5E20</color>
+
+    <color name="colorGreyAccentTransparency">#808B8080</color>
+    <color name="colorGrey">#CFCFCF</color>
+    <color name="colorGreyTransparency">#80C0C0C0</color>
+    <color name="colorGreyLight">#F0EEEE</color>
+    <color name="colorGreyAccent">#FAFAFA</color>
+    <color name="colorTextAssistant">#E6E6E6</color>
+    <color name="colorWhiteTransparency">#28FFFFFF</color>
+    <color name="colorBlackAccentTransparency">#22000000</color>
+
+</resources>

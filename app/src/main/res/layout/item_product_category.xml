@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:id="@+id/rltContainer"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dimenPaddingVertical_3dp"
+        android:layout_marginRight="@dimen/dimenPaddingVertical_3dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_movie_thumb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:src="@drawable/noimage"
+                />
+
+            <ProgressBar
+                android:id="@+id/pb_load_image"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <RatingBar
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/ratingbarPointProduct"
+            style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:numStars="5"
+            android:rating="4.5"
+            android:theme="@style/ChangeRatingBar"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="2dp"
+            android:id="@+id/txtNameProduct"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:text="Kệ Treo Tường 2 bộ ô vuông lồng và 3 Thanh Ngang Dài 40cm x Sâu 13cm"/>
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:padding="2dp"
+            android:id="@+id/txtPriceProduct"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="200000đ"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

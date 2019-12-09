@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ctl_view_product_more"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dimenPaddingVertical_8dp">
+
+    <ImageView
+        android:id="@+id/img_sale_product"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="24dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txt_name_product_sale"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/unknown" />
+
+    <TextView
+        android:id="@+id/txt_name_product_sale"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Tên sản phẩm"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txt_price_product_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="2.000.000 đ"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/ratingbarPointProductSale" />
+
+    <RatingBar
+        android:id="@+id/ratingbarPointProductSale"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:numStars="5"
+        android:rating="4.5"
+        android:theme="@style/ChangeRatingBar"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name_product_sale" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="142dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="411dp"
+        android:layout_height="0.5dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

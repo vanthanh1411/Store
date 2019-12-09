@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.userpage.userinfo.UserInfoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbUserInfo"
+        style="@style/LightTintToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userinfo"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/mediumText" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvHelloUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbUserInfo"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:text="@string/hello"
+        android:textSize="@dimen/smallText" />
+
+
+    <RelativeLayout
+        android:id="@+id/rlInfoImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/tvHelloUser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/smallMargin"
+        android:src="@drawable/unknown">
+
+        <ImageView
+            android:id="@+id/ivInfoImage"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/unknown" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorBlackTransparency"
+            android:paddingTop="@dimen/smallPadding"
+            android:paddingBottom="@dimen/smallPadding"
+            android:src="@drawable/ic_photo_camera_black_24dp"
+            android:tint="@color/colorWhite" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etInfoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlInfoImage"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:background="@drawable/bg_edittext"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:drawablePadding="@dimen/mediumPadding"
+        android:hint="@string/name_require"
+        android:paddingStart="@dimen/mediumPadding"
+        tools:ignore="RtlSymmetry" />
+
+
+    <EditText
+        android:id="@+id/etInfoPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etInfoName"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:background="@drawable/bg_edittext"
+        android:drawableStart="@drawable/ic_smartphone_black_24dp"
+        android:drawablePadding="@dimen/mediumPadding"
+        android:hint="@string/phone_require"
+        android:inputType="phone"
+        android:paddingStart="@dimen/mediumPadding"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/etInfoAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etInfoPhone"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:background="@drawable/bg_edittext"
+        android:drawableStart="@drawable/ic_home_black_24dp"
+        android:drawablePadding="@dimen/mediumPadding"
+        android:hint="@string/address_require"
+        android:paddingStart="@dimen/mediumPadding"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btnChangeInfo"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:layout_marginBottom="@dimen/mediumMargin"
+        android:background="@drawable/bg_button_blue"
+        android:text="@string/change" />
+
+    <ProgressBar
+        android:id="@+id/pbChangingInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etInfoAddress"
+        android:layout_marginStart="@dimen/largeMargin"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:layout_marginEnd="@dimen/largeMargin"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/rlLoadingUserInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tbUserInfo"
+        android:background="@color/colorWhite"
+        android:elevation="2dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang tải thông tin người dùng\nVui lòng chờ..."
+                android:textAlignment="center" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

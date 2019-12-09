@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //user
+    <dimen name="dimenPaddingVertical">10dp</dimen>
+    <dimen name="dimenPaddingVertical_8dp">8dp</dimen>
+    <dimen name="dimenPaddingVertical_16dp">16dp</dimen>
+    <dimen name="dimenPaddingVertical_3dp">3dp</dimen>
+    <dimen name="dimenPaddingHorizontal">15dp</dimen>
+
+    <dimen name="division_line">0.5dp</dimen>
+    <dimen name="dimenPaddingDiminutive">5dp</dimen>
+
+
+    // cartItem
+    <dimen name="smallPadding">5dp</dimen>
+    <dimen name="mediumPadding">15dp</dimen>
+    <dimen name="largePadding">25dp</dimen>
+    <dimen name="ultraPadding">75dp</dimen>
+    <dimen name="megaPadding">150dp</dimen>
+    <!--    Margin-->
+    <dimen name="smallMargin">5dp</dimen>
+    <dimen name="mediumMargin">15dp</dimen>
+    <dimen name="largeMargin">30dp</dimen>
+    <dimen name="ultraMargin">60</dimen>
+    <dimen name="megaMargin">150dp</dimen>
+    <!--    Text-->
+    <dimen name="smallText">15sp</dimen>
+    <dimen name="mediumText">18sp</dimen>
+    <dimen name="largeText">35sp</dimen>
+    <dimen name="megaText">50sp</dimen>
+
+
+
+    <dimen name="layout_marginRight_16dp">16dp</dimen>
+    <dimen name="layout_marginLeft_16dp">16dp</dimen>
+    <dimen name="layout_marginBottom_16dp">16dp</dimen>
+
+    <dimen name="layout_marginRight_24dp">24dp</dimen>
+    <dimen name="layout_marginLeft_24dp">24dp</dimen>
+    <dimen name="layout_marginBottom_24dp">24dp</dimen>
+
+</resources>

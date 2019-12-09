@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreyLight"
+    tools:context=".view.categorypage.CategoryListProductActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/icl_toolbar_category"
+            layout="@layout/layout_toolbar_find_category" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/icl_product_list_category"
+                    layout="@layout/layout_category_product_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/icl_slide_show_cateogry"
+                    />
+            </RelativeLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

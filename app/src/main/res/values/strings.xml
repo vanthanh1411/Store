@@ -1,0 +1,144 @@
+<resources>
+
+    <string name="app_name">StoreApp</string>
+
+    <!-- ============================= -->
+    <!-- STRINGS USED MAINACTIVITY -->
+    <!-- ============================= -->
+    <string name="home">Trang chủ</string>
+    <string name="category">Danh mục</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="user">Cá nhân</string>
+    <string name="cart">Giỏ hàng</string>
+
+    <!-- ============================= -->
+    <!-- STRINGS USED TOOLBAR FIND -->
+    <!-- ============================= -->
+    <string name="find">Hôm nay bạn tìm gi...</string>
+
+    <!-- ============================= -->
+    <!-- STRINGS USED HOMEFRAGMENT -->
+    <!-- ============================= -->
+    <string name="suggestions_for_you">Gợi ý cho bạn</string>
+
+    <!-- ============================= -->
+    <!-- STRINGS USED ERROR -->
+    <!-- ============================= -->
+    <string name="communication_error">Lỗi lấy dữ liệu. Vui lòng thử lại sau</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="buy">Mua Hàng</string>
+
+    <string name="largeText">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</string>
+
+    <!--    Cart-->
+    <string name="into_money">Thành tiền</string>
+    <string name="sum_of_money">100.000.000 đ</string>
+    <string name="proceed_to_ordering">Tiến hành đặt hàng</string>
+    <string name="defaultNumber">0</string>
+    <!--    Payment-->
+    <string name="pay">Thanh toán</string>
+    <string name="total">Thành tiền: 1.000.000.000 đ</string>
+
+    <!--    Register-->
+    <string name="register">ĐĂNG KÝ</string>
+    <string name="email_require">Nhập email</string>
+    <string name="password_require">Nhập mật khẩu</string>
+    <string name="repassword_require">Nhập lại mật khẩu</string>
+    <string name="wipe_to_login">Trượt sang trái để <b>ĐĂNG NHẬP</b></string>
+    <string name="swipe_to_register">Trượt qua trái để <b>ĐĂNG KÝ</b></string>
+    <string name="login">ĐĂNG NHẬP</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="login_require">Bạn hiện chưa <b>Đăng Nhập</b>! \nVui lòng <b>Đăng Nhập</b> / <b>Đăng Ký</b> để tiếp tục</string>
+    <string name="login_or_register">ĐĂNG NHẬP / ĐĂNG KÝ</string>
+    <string name="hint_searchbar">Nhập tên sản phẩm muốn tìm</string>
+
+    <!-- ============================= -->
+    <!-- STRINGS USER -->
+    <!-- ============================= -->
+
+    <!--    order-->
+    <string name="order">Đơn hàng</string>
+    <string name="store_has_received">Shop đã tiếp nhận</string>
+    <string name="awaiting_shipping">Đang chờ vận chuyển</string>
+    <string name="successful_order">Đơn hàng thành công</string>
+    <string name="order_canceled">Đơn hàng đã hủy</string>
+
+    <!--    local & card-->
+    <string name="local_buy">Số địa chỉ</string>
+    <string name="billing_infomation_bill">Thông tin thanh toán</string>
+    <string name="like">Đã thích</string>
+    <string name="have_just_seen">Mới xem</string>
+    <string name="my_review">Đánh giá của tôi</string>
+    <string name="products_purchased">Sản phẩm đã mua</string>
+    <string name="my_comment">Nhận xét của tôi</string>
+    <string name="support">Trợ giúp</string>
+    <string name="product_name">Tên sản phẩm</string>
+    <string name="price">Giá tiền</string>
+    <string name="searchtext">Nhập tên mặt hàng bạn cần tìm</string>
+
+    <string name="view_product">Xem nhiều nhất</string>
+    <string name="buy_product">Mua nhiều nhất</string>
+    <string name="view_all">XEM THÊM</string>
+
+    <!--    logout-->
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="username">(Đang tải…)</string>
+    <string name="useremail">(Đang tải…)</string>
+    <string name="instock">Còn hàng</string>
+    <string name="outstock">Hết hàng</string>
+    <string name="summoney">Tổng cộng: 1.000.000.000 đ</string>
+    <string name="discount">Giảm giá: - 1.000.000 đ</string>
+    <string name="shiptax">Chi phí vận chuyển: 15.000 đ</string>
+    <string name="quantity">Số lượng: 1</string>
+    <string name="address"><b>Địa chỉ: </b><i>Đang tải...</i></string>
+    <string name="change">Thay đổi</string>
+    <string name="phone"><b>SĐT: </b> <i>Đang tải...</i></string>
+    <string name="address_require">Nhập địa chỉ</string>
+    <string name="phone_require">Nhập số điện thoại</string>
+    <string name="updateinfo">Thay đổi thông tin</string>
+    <string name="choose_applyall">Áp dụng cho tất cả đơn hàng sau này (Cập nhật thông tin người dùng)</string>
+    <string name="choose_applyone">Chỉ áp dụng cho đơn hàng này</string>
+    <string name="name"><b>Tên người nhận: </b>Đang tải...</string>
+    <string name="productincart_require">Hiện tại giỏ hàng đang trống\nVui lòng chọn sản phẩm để tiếp tục!</string>
+    <string name="to_producs">Đến danh sách sản phẩm</string>
+    <string name="userinfo">Thông tin người dùng</string>
+    <string name="hello">Xin chào, vanthanh1411@gmail.com</string>
+    <string name="name_require">Nhập tên</string>
+    <string name="orderstatus_0">Đơn hàng đang chờ đơn vị xử lý</string>
+    <string name="orderstatus_1">Đơn hàng đã được tiếp nhận</string>
+    <string name="orderstatus_2">Đơn hàng đã được bàn giao cho đơn vị vận chuyển</string>
+    <string name="orderstatus_3">Đơn hàng đang được vận chuyển</string>
+    <string name="orderstatus_4">Đơn hàng đã vận chuyển thành công</string>
+    <string name="boughtproduct">Sản phẩm đã mua</string>
+    <string name="orders_title">Danh sách đơn hàng</string>
+    <string name="order_info">Thông tin đơn hàng</string>
+    <string name="order_id">Mã đơn hàng: 123456789</string>
+    <string name="order_date">Ngày đặt hàng: 10:00, 01/11/2019</string>
+    <string name="order_status">Trạng thái: giao hàng thành công</string>
+    <string name="order_total">Tổng</string>
+
+    // comment
+    <string name="comment">Viết nhận xét</string>
+    <string name="evalute_title">Đánh giá của bạn</string>
+    <string name="content_first_ratingbar">Bạn chưa đánh giá</string>
+    <string name="title_image_comment">Thêm hình sản phẩm nếu bạn muốn</string>
+    <string name="title_comment">Tiêu đề (không bắt buộc)</string>
+    <string name="content_comment">Viết nhận xét sản phẩm</string>
+    <string name="button_send_comment">Gửi</string>
+
+    //comment - Rartingbar
+    <string name="first_star">Bạn chưa đánh giá</string>
+    <string name="star_one">Rất không hài lòng</string>
+    <string name="star_two">Không hài lòng</string>
+    <string name="star_three">Bình thường</string>
+    <string name="star_four">Hài lòng</string>
+    <string name="star_five">Rất hài lòng</string>
+
+    //comment-context-menu
+    <string name="item_picker_single_image">Chọn 1 bức</string>
+    <string name="item_picker_multi_image">Chọn nhiều bức</string>
+
+
+</resources>

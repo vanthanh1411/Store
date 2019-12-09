@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGreyLight"
+    tools:context=".view.productDetails.comment.CommentProductActivity">
+
+    <ScrollView
+        android:id="@+id/scrollViewComment"
+        android:layout_above="@+id/btn_send_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_marginLeft_16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/img_commentProduct"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cat" />
+
+                <TextView
+                    android:id="@+id/tv_nameProduct"
+                    android:layout_width="260dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="@dimen/layout_marginLeft_16dp"
+                    android:text="Tên sản phẩm"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorGreyAccentTransparency" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimenPaddingVertical_16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/evalute_title"
+                    android:textSize="20sp" />
+
+                <RatingBar
+                    android:id="@+id/rtb_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/AppThemeRatingBar"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="@dimen/layout_marginBottom_16dp"
+                    android:numStars="0" />
+
+                <TextView
+                    android:id="@+id/tv_contentRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/content_first_ratingbar"
+                    android:textColor="@color/colorRed"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_image_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_marginBottom_16dp"
+                android:background="@drawable/bg_image_comment"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/img_camera_comment_one"
+                    android:layout_width="105dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_add_image_comment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dimenPaddingVertical_8dp"
+                    android:text="@string/title_image_comment"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcl_image_comment"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <!--END image product comment-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/layout_marginBottom_16dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:hint="@string/title_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_title_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:hint="@string/content_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_write_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btn_send_comment"
+        android:text="@string/button_send_comment"
+        android:background="@color/colorRed"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/layout_marginBottom_16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/app_name"
+        android:textSize="@dimen/megaText" />
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:text="@string/login"
+        android:textSize="@dimen/mediumText" />
+
+    <EditText
+        android:id="@+id/etLogInEmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/largeMargin"
+        android:background="@drawable/bg_edittext"
+        android:hint="@string/email_require"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/etLogInPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:layout_marginBottom="@dimen/mediumMargin"
+        android:background="@drawable/bg_edittext"
+        android:hint="@string/password_require"
+        android:inputType="textPassword"
+        android:padding="15dp"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/smallMargin"
+        android:background="@drawable/bg_button_blue"
+        android:text="@string/login"
+        android:textSize="@dimen/mediumText"
+        android:textColor="@android:color/white" />
+
+    <ProgressBar
+        android:id="@+id/pbIsLoggingIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_above="@id/swipeRight"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+        <TextView
+            android:id="@+id/swipeRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/swipe_to_register"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</LinearLayout>

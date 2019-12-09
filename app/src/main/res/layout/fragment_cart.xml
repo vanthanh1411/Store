@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.order.cart.CartFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbCart"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/mediumText"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/llctnCartProductRequire"
+        android:layout_marginTop="@dimen/mediumMargin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbCart"
+        android:gravity="center"
+        android:elevation="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/productincart_require"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/btnToProducts"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:paddingStart="@dimen/mediumPadding"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:paddingEnd="@dimen/mediumPadding"
+            android:text="@string/to_producs"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcl_cart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/tbCart" />
+
+    <ProgressBar
+        android:id="@+id/pbCartsLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/tbCart"
+        android:background="@color/colorWhite"
+        android:padding="@dimen/megaPadding"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorWhite"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="@dimen/smallPadding">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@+id/txt_sumMoneyCart"
+                android:paddingStart="@dimen/mediumPadding"
+                android:text="@string/into_money"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/mediumText" />
+
+            <TextView
+                android:id="@+id/txt_sumMoneyCart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="@string/sum_of_money"
+                android:textColor="@color/colorRedDark"
+                android:textSize="@dimen/mediumText"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnToPay"
+            style="@android:style/Widget.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:background="@color/colorRed"
+            android:padding="0dp"
+            android:text="@string/proceed_to_ordering"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/mediumText" />
+    </LinearLayout>
+</RelativeLayout>

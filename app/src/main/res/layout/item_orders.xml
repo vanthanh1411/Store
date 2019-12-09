@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/smallMargin"
+    android:layout_marginTop="@dimen/smallMargin"
+    android:layout_marginEnd="@dimen/smallMargin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/smallPadding">
+
+        <TextView
+            android:id="@+id/tvOrderId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mã: 5de5c0efc676c90" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày đặt: 14/11/2019" />
+
+        <TextView
+            android:id="@+id/tvOrderStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trạng thái đơn hàng" />
+
+    </LinearLayout>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvOrderAddress"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Địa chỉ: 114 Phan Đăng Lưu" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal">-->
+
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tvOrderTotal"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:gravity="end"-->
+    <!--            android:text="100.000.000 đ"-->
+    <!--            android:textColor="@color/colorRedDark"-->
+
+    <!--            android:textSize="@dimen/mediumText" />-->
+    <!--    </LinearLayout>-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvOrderCustomer"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Người nhận: Trần Văn Thành" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tvOrderPhone"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="SĐT: 0377671176" />-->
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/smallMargin"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/smallPadding">
+
+        <FrameLayout
+            android:layout_width="125dp"
+            android:layout_height="125dp">
+
+            <ImageView
+                android:id="@+id/ivSProductImage"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test" />
+
+            <ProgressBar
+                android:id="@+id/pbSLoadingImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/smallPadding"
+            android:paddingTop="@dimen/mediumPadding"
+            android:paddingEnd="@dimen/smallPadding"
+            android:paddingBottom="@dimen/mediumPadding">
+
+            <TextView
+                android:id="@+id/tvSProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/product_name"
+                android:textSize="@dimen/mediumText"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:theme="@style/ChangeRatingBar"
+                android:id="@+id/rbSProductRating"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:rating="5"
+                android:layout_marginTop="@dimen/smallMargin" />
+
+            <TextView
+                android:id="@+id/tvSProductPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/rbSProductRating"
+                android:text="@string/price"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/mediumText"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

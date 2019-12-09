@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tbUser"
+            style="@style/LightTintToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"
+            app:title="Thông tin người dùng" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btnLogOut"
+            android:layout_below="@+id/tbUser"
+            android:padding="@dimen/smallPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_user_card" />
+
+                <include layout="@layout/layout_user_order" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <Button
+            android:id="@+id/btnLogOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/smallMargin"
+            android:background="@drawable/bg_button_blue"
+            android:text="@string/logout"
+            android:textColor="@color/colorWhite" />
+
+        <include
+            android:id="@+id/inclLogInRequire"
+            layout="@layout/layout_login_require"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rlLoadingUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tbUser"
+            android:background="@color/colorWhite"
+            android:elevation="2dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đang tải thông tin người dùng\nVui lòng chờ..."
+                    android:textAlignment="center"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

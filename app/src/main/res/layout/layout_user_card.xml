@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlctnUserCart"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/smallMargin"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivUserImage"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/smallPadding"
+                android:scaleType="centerCrop"
+                android:src="@drawable/unknown" />
+
+            <LinearLayout
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:background="@color/colorWhite" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/smallPadding">
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/username"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/useremail" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLoginRequire"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/smallMargin"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/smallPadding"
+                android:src="@drawable/unknown" />
+
+            <LinearLayout
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/smallMargin"
+                android:background="@color/colorWhite" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/smallPadding">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chào mừng bạn đến với StoreDecor"
+                    android:textSize="@dimen/smallText" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng nhập / Đăng ký"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/mediumText" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
