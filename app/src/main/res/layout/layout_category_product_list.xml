@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/dimenPaddingVertical">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:id="@+id/rlFilterTitleBar"

@@ -7,8 +7,8 @@ import com.duykhanh.storeapp.utils.Constants;
  */
 public class ApiUtils {
 
-//    public static final String BASE_URL = Constants.BASE_URL + "/api/str1/";
-   public static final String BASE_URL = Constants.BASE_URL + ":4444/api/str1/";
+    public static final String BASE_URL = Constants.BASE_URL + "/api/str1/";
+//   public static final String BASE_URL = Constants.BASE_URL + ":4444/api/str1/";
 
     //Nhận và gửi dữ liệu đi
     public static DataClient getProductList(){

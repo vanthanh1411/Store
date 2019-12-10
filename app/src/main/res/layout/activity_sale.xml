@@ -14,7 +14,6 @@
         android:id="@+id/rcl_sale_product_more"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
         android:background="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/pb_load_sale_product"
         app:layout_constraintEnd_toEndOf="parent"

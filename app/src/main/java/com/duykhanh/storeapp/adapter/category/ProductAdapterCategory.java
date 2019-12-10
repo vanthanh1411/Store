@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -141,7 +142,7 @@ public class ProductAdapterCategory extends RecyclerView.Adapter<ProductAdapterC
         RatingBar ratingbarPointProduct;
         ImageView imgProduct;
         RecyclerView recyclerProducts;
-        RelativeLayout rltContainer;
+        CardView rltContainer;
 
         ProgressBar pb_load_image;
 
