@@ -467,7 +467,6 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
         detailIntent.putExtra(KEY_RELEASE_TO, viewProductList.get(position).getId());
         detailIntent.putExtra("KEY_START_HOMESCREEN", KEY_DATA_HOME_TO_DETAIL_PRODUCT);
         startActivityForResult(detailIntent, KEY_START_DETAIL_PRODUCT);
-        Toast.makeText(getActivity(), "" + viewProductList.get(position).getNameproduct(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

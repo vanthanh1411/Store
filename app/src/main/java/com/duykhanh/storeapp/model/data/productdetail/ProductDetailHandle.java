@@ -2,6 +2,7 @@ package com.duykhanh.storeapp.model.data.productdetail;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -33,9 +34,25 @@ public class ProductDetailHandle implements ProductDetailContract.Handle {
     final String TAG = this.getClass().toString();
 
     SQLiteDatabase database;
+    SharedPreferences sharedPreferences;
 
     public ProductDetailHandle(ProductDetailContract.View iView) {
         database = new DatabaseHelper((Context) iView).getWritableDatabase();
+        sharedPreferences = ((Context) iView).getSharedPreferences("User", Context.MODE_PRIVATE);
+    }
+
+    @Override
+    public void getCurrentUser(OnGetCurrentUserListener listener) {
+        try {
+            String userId = sharedPreferences.getString("UserId", "");
+            if (userId.equals("")) {
+                listener.onGetCurrentUserFinished("");
+            } else {
+                listener.onGetCurrentUserFinished(userId);
+            }
+        } catch (Exception e) {
+            listener.onGetCurrentUserFailure(e);
+        }
     }
 
     //Lấy thông tin chi tiết sản phẩm
@@ -161,6 +178,7 @@ public class ProductDetailHandle implements ProductDetailContract.Handle {
                 }
                 Log.d(TAG, "onResponse: up view complete");
             }
+
             @Override
             public void onFailure(Call<Product> call, Throwable t) {
                 Log.e(TAG, "onFailure: ", t);
@@ -169,7 +187,7 @@ public class ProductDetailHandle implements ProductDetailContract.Handle {
     }
 
     @Override
-    public void getInfomationUser(onGetInfomationUser callback) {
+    public void getInfomationUser(OnGetInfomationUser callback) {
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -204,4 +222,26 @@ public class ProductDetailHandle implements ProductDetailContract.Handle {
         Log.d(TAG, "onGetProductCount: " + countProduct);
     }
 
+
+    @Override//Lấy danh sách sản phẩm liên quan
+    public void getRelatedProducts(OnGetRelatedProductsListener listener, String catgoryId) {
+        DataClient apiService = ApiUtils.getProductList();
+        Call<List<Product>> call = apiService.getProductListCategory(catgoryId, 1);
+        call.enqueue(new Callback<List<Product>>() {
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                if (!response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                    return;
+                }
+                List<Product> products = response.body();
+                listener.onGetRelatedProductsFinished(products);
+            }
+
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                listener.onGetRelatedProductsFailure(t);
+            }
+        });
+    }
 }

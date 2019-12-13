@@ -70,7 +70,7 @@ public class ProductAdapterCategory extends RecyclerView.Adapter<ProductAdapterC
 
         holder.txtNameProduct.setText(product.getNameproduct());
         holder.txtPriceProduct.setText(Formater.formatMoney(product.getPrice()) + "đ");
-//        holder.ratingbarPointProduct.setRating(product.getPoint());
+        holder.ratingbarPointProduct.setRating(product.getPoint());
 
         String url = formater.formatImageLink(product.getImg().get(0));
 

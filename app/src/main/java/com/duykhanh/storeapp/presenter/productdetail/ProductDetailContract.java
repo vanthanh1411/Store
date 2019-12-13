@@ -10,6 +10,8 @@ import java.util.List;
 public interface ProductDetailContract {
 
     interface Handle {
+        void getCurrentUser(OnGetCurrentUserListener listener);
+
         void getProductDetail(OnGetProductDetailListener listener, String productId);
 
         void getCommentByIdp(OnGetCommentByIdpListener listener, String productId);
@@ -20,10 +22,18 @@ public interface ProductDetailContract {
 
         void increaseProductView(String productId);
 
-        void getInfomationUser(onGetInfomationUser callback);
+        void getInfomationUser(OnGetInfomationUser callback);
+
+        void getRelatedProducts(OnGetRelatedProductsListener listener, String categoryId);
 
         // Instance ProductListConstract.Presenter
         void onGetProductCount();
+
+        interface OnGetCurrentUserListener {
+            void onGetCurrentUserFinished(String userId);
+
+            void onGetCurrentUserFailure(Throwable throwable);
+        }
 
         interface OnGetProductDetailListener {
 
@@ -49,13 +59,22 @@ public interface ProductDetailContract {
             void onGetCartCounterFinished(int sumQuantity);
         }
 
-        interface onGetInfomationUser{
+        interface OnGetInfomationUser {
             void onFinished(List<User> userList);
+
             void onFaild();
+        }
+
+        interface OnGetRelatedProductsListener {
+            void onGetRelatedProductsFinished(List<Product> products);
+
+            void onGetRelatedProductsFailure(Throwable throwable);
         }
     }
 
     interface View {
+        void requestCurrentUserComplete(String userId);
+
         //Set chi tiết sản phẩm
         void setDataToView(Product product);
 
@@ -75,6 +94,8 @@ public interface ProductDetailContract {
 
         void sendInfomationUser(List<User> userList);
 
+        void requestRelatedProductsSuccess(List<Product> products);
+
         void onFaild();
 
         void showProgress();
@@ -84,6 +105,8 @@ public interface ProductDetailContract {
     }
 
     interface Presenter {
+        void requestCurrentUser();
+
         void requestProductFromServer(String productId);
 
         void requestCommentsFromServer(String productId);
@@ -95,6 +118,8 @@ public interface ProductDetailContract {
         void addCartItem(CartItem cartItem);
 
         void requestIncreaseView(String productId);
+
+        void requestRelatedProducts(String categoryId);
 
         void onDestroy();
     }

@@ -35,8 +35,8 @@ public class Formater {
     }
 
     public static String formatImageLink(String inputLink) {
-
-        return "https://strdecor.herokuapp.com/" + inputLink.substring(22);
+        return "https://strdecor.azurewebsites.net/" + inputLink.substring(22);
+//        return "https://strdecor.herokuapp.com/" + inputLink.substring(22);
 //        return  Constants.BASE_URL + inputLink.substring(16);
     }
 

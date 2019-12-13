@@ -68,7 +68,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         String nameProduct = formater.formatNameProduct(product.getNameproduct());
         holder.txtNameProduct.setText(nameProduct);
         holder.txtPriceProduct.setText(priceProduct + " đ");
-//        holder.ratingbarPointProduct.setRating(product.getPoint());
+        holder.ratingbarPointProduct.setRating(product.getPoint());
         String url = null;
         try {
             url = formater.formatImageLink(product.getImg().get(0));

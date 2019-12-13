@@ -15,15 +15,22 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter,
         ProductDetailContract.Handle.OnGetCommentByIdpListener,
         ProductDetailContract.Handle.OnCreateCartItemListener,
         ProductDetailContract.Handle.OnGetCartCounterListener,
-        ProductDetailContract.Handle.onGetInfomationUser {
+        ProductDetailContract.Handle.OnGetInfomationUser,
+        ProductDetailContract.Handle.OnGetCurrentUserListener,
+        ProductDetailContract.Handle.OnGetRelatedProductsListener {
     final String TAG = this.getClass().toString();
 
-    ProductDetailContract.Handle iHanlde;
+    ProductDetailContract.Handle iHandle;
     ProductDetailContract.View iView;
 
     public ProductDetailPresenter(ProductDetailContract.View iView) {
         this.iView = iView;
-        iHanlde = new ProductDetailHandle(iView);
+        iHandle = new ProductDetailHandle(iView);
+    }
+
+    @Override
+    public void requestCurrentUser() {
+        iHandle.getCurrentUser(this);
     }
 
     @Override
@@ -32,34 +39,46 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter,
         if (iView != null) {
             iView.showProgress();
         }
-        iHanlde.getProductDetail(this, productId);
+        iHandle.getProductDetail(this, productId);
     }
 
     @Override
     public void requestCommentsFromServer(String productId) {
-        iHanlde.getCommentByIdp(this, productId);
+        iHandle.getCommentByIdp(this, productId);
     }
 
     @Override
     public void requestCartCounter() {
         Log.d(TAG, "requestCartCounter: ");
-        iHanlde.getCartCounter(this);
+        iHandle.getCartCounter(this);
     }
 
     @Override
     public void requestInfomationUser() {
-        iHanlde.getInfomationUser(this);
+        iHandle.getInfomationUser(this);
     }
 
 
     @Override
     public void addCartItem(CartItem cartItem) {
-        iHanlde.createCartItem(this, cartItem);
+        iHandle.createCartItem(this, cartItem);
     }
 
     @Override
     public void requestIncreaseView(String productId) {
-        iHanlde.increaseProductView(productId);
+        iHandle.increaseProductView(productId);
+    }
+
+    @Override//Yêu cầu lấy danh sách những sản phẩm liên quan
+    public void requestRelatedProducts(String categoryId) {
+        if (iView != null) {
+            iHandle.getRelatedProducts(this, categoryId);
+        }
+    }
+
+    @Override//Yêu cầu lấy danh sách sản phẩm liên quan thành công
+    public void onGetRelatedProductsFinished(List<Product> products) {
+        iView.requestRelatedProductsSuccess(products);
     }
 
     @Override
@@ -67,8 +86,8 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter,
         Log.d(TAG, "onGetProductDetailFinished: " + product.toString());
         if (iView != null) {
             iView.hideProgress();
+            iView.setDataToView(product);
         }
-        iView.setDataToView(product);
 
     }
 
@@ -79,7 +98,7 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter,
 
     @Override
     public void onCreateCartItemFinished() {
-        iHanlde.getCartCounter(this);
+        iHandle.getCartCounter(this);
     }
 
     @Override
@@ -120,5 +139,22 @@ public class ProductDetailPresenter implements ProductDetailContract.Presenter,
     @Override
     public void onDestroy() {
         iView = null;
+    }
+
+    @Override
+    public void onGetCurrentUserFinished(String userId) {
+        if (iView != null) {
+            iView.requestCurrentUserComplete(userId);
+        }
+    }
+
+    @Override
+    public void onGetCurrentUserFailure(Throwable throwable) {
+        Log.e(TAG, "onGetCurrentUserFailure: ", throwable);
+    }
+
+    @Override//Lấy danh sách sản phẩm liên quan thất bại
+    public void onGetRelatedProductsFailure(Throwable throwable) {
+        Log.e(TAG, "onGetRelatedProductsFailure: ", throwable);
     }
 }

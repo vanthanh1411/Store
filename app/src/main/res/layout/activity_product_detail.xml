@@ -143,6 +143,8 @@
 
             <include layout="@layout/layout_product_comment" />
 
+            <include layout="@layout/layout_relatived_products"/>
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

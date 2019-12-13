@@ -117,10 +117,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
 
-
-        SharedPreferences.Editor editor = getSharedPreferences("MyNotification", MODE_PRIVATE).edit();
-        editor.putString("Title", title);
-        editor.putString("Body", messageBody);
-        editor.apply();
     }
 }

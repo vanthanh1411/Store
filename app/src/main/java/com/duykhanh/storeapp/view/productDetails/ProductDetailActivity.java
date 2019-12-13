@@ -1,6 +1,8 @@
 package com.duykhanh.storeapp.view.productDetails;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -32,6 +34,7 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.duykhanh.storeapp.R;
 import com.duykhanh.storeapp.adapter.comment.CommentsAdapter;
+import com.duykhanh.storeapp.adapter.productdetail.RelatedProductAdapter;
 import com.duykhanh.storeapp.adapter.slide.SlideAdapter;
 import com.duykhanh.storeapp.model.CartItem;
 import com.duykhanh.storeapp.model.Comment;
@@ -45,8 +48,10 @@ import com.duykhanh.storeapp.view.categorypage.CategoryListProductActivity;
 import com.duykhanh.storeapp.view.order.OrderActivity;
 import com.duykhanh.storeapp.view.productDetails.comment.CommentProductActivity;
 import com.duykhanh.storeapp.view.productDetails.comment.MoreCommentProductActivity;
+import com.duykhanh.storeapp.view.userpage.account.AccountActivity;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+
 import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -63,7 +68,10 @@ import static com.duykhanh.storeapp.utils.Constants.KEY_RELEASE_TO;
 import static com.duykhanh.storeapp.utils.Constants.KEY_TEM_POSITION_SALE;
 
 
-public class ProductDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener, ProductDetailContract.View, View.OnClickListener {
+public class ProductDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener,
+        ProductDetailContract.View,
+        View.OnClickListener,
+        RelatedProductItemClickListener {
     final String TAG = this.getClass().toString();
     boolean isHideToolbarView = false;
     int dotsCount;
@@ -77,15 +85,19 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
     ProductDetailPresenter productDetailPresenter;
     List<Comment> comments;
     List<User> uList;
+    List<Product> products;
     Product mProduct;
     CartItem cartItem;
 
     LinearLayoutManager mLayoutManager;
+    LinearLayoutManager relatedProductLayoutManager;
     CommentsAdapter commentsAdapter;
+    RelatedProductAdapter relatedProductAdapter;
+
 
     List<Fragment> fragmentList;
     ImageView[] dots;
-    RecyclerView rvComment;
+    RecyclerView rvComment, rvRelatedProducts;
     ViewPager vpProductImgSlide;
 
     AppBarLayout appBarLayout;
@@ -119,6 +131,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         initComponent();
         //Thiết lập chung cho RecyclerView hiển thị Comment (chưa đưa dữ liệu vào)
         settingCommentsRecyclerView();
+        settingRelatedProductsRecyclerView();
         //Lấy Id của Product
 
         Intent intent = getIntent();
@@ -144,7 +157,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
             dataStartActivity = intent.getIntExtra("KEY_START_CATEGORY", 0);
         }
 
-        if(intent.getStringExtra(KEY_TEM_POSITION_SALE) != null){
+        if (intent.getStringExtra(KEY_TEM_POSITION_SALE) != null) {
             productId = intent.getStringExtra(KEY_TEM_POSITION_SALE);
         }
 
@@ -193,9 +206,36 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
             tvCartCounted.setVisibility(View.GONE);
         }
         //Chuyển sang màn hình giỏ hàng
-        if (isBuyNow){
-            startActivity(new Intent(this,OrderActivity.class));
+        if (isBuyNow) {
+            startActivity(new Intent(this, OrderActivity.class));
         }
+    }
+
+    @Override//Lấy người dùng hiện tại
+    public void requestCurrentUserComplete(String userId) {
+        if (userId.equals("")) {
+            showDialog();
+        } else {
+            Intent iComment = new Intent(ProductDetailActivity.this, CommentProductActivity.class);
+            iComment.putExtra(KEY_COMMENT_PRODUCT, mProduct);
+            startActivity(iComment);
+        }
+    }
+
+    private void showDialog() {
+        Log.d(TAG, "showDialog: ");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Bạn hiện chưa đăng nhập!\nNhấn đồng ý chuyển đến màn hình đăng nhập.")
+                .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        startActivity(new Intent(ProductDetailActivity.this, AccountActivity.class));
+                    }
+                })
+                .setNegativeButton("Hủy bỏ", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+        builder.create().show();
     }
 
     @Override//Đưa dữ liệu vào view
@@ -203,6 +243,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         mProduct = product;
         bindDataToSlide(mProduct.getImg());
         bindDataToDetail(mProduct);
+        productDetailPresenter.requestRelatedProducts(mProduct.getIdcategory());
     }
 
     @Override
@@ -252,13 +293,11 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
                 }
                 break;
             case R.id.btnToComment:
-                Intent iComment = new Intent(ProductDetailActivity.this, CommentProductActivity.class);
-                iComment.putExtra(KEY_COMMENT_PRODUCT, mProduct);
-                startActivity(iComment);
+                productDetailPresenter.requestCurrentUser();
                 break;
             case R.id.txt_view_comment_all:
                 Intent iCommentMore = new Intent(ProductDetailActivity.this, MoreCommentProductActivity.class);
-                iCommentMore.putExtra(KEY_READ_ALL_COMMENT,productId);
+                iCommentMore.putExtra(KEY_READ_ALL_COMMENT, productId);
                 startActivity(iCommentMore);
                 break;
             case R.id.tvSeeMore:
@@ -343,6 +382,11 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         rvComment.setAdapter(commentsAdapter);
     }
 
+    private void settingRelatedProductsRecyclerView() {//Thiết lập RecyclerView danh sách sản phẩm liên quan
+        rvRelatedProducts.setLayoutManager(relatedProductLayoutManager);
+        rvRelatedProducts.setAdapter(relatedProductAdapter);
+    }
+
     @Override
     public void onCommentsResponseFailure(Throwable throwable) {
         Log.e(TAG, "onCommentsResponseFailure: ", throwable);
@@ -361,6 +405,19 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         commentsAdapter.notifyDataSetChanged();
     }
 
+    @Override//Gửi yêu cầu lấy danh sách sản phẩm liên quan thành công
+    public void requestRelatedProductsSuccess(List<Product> productss) {
+        products.clear();
+        Log.d(TAG, "requestRelatedProductsSuccess: productId" + productId);
+        for (Product product : productss) {
+            if (!product.getId().equals(productId)) {
+                products.add(product);
+                Log.d(TAG, "requestRelatedProductsSuccess: productIds" + product.getId());
+            }
+        }
+        relatedProductAdapter.notifyDataSetChanged();
+    }
+
     @Override
     public void onFaild() {
 
@@ -374,11 +431,14 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
 
 
     private void initComponent() {
+        products = new ArrayList<>();
         productDetailPresenter = new ProductDetailPresenter(this);
         productDetailPresenter.requestInfomationUser();
         comments = new ArrayList<>();
         commentsAdapter = new CommentsAdapter(ProductDetailActivity.this, comments, R.layout.item_comments);
         formater = new Formater();
+        relatedProductLayoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        relatedProductAdapter = new RelatedProductAdapter(this, R.layout.item_related_product, products);
     }
 
     private void initUI() {
@@ -391,6 +451,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         pbProductDetail = findViewById(R.id.pbProductDetail);
         rbProductRating = findViewById(R.id.ratingbarPointProductDetail);
         rvComment = findViewById(R.id.rvComments);
+        rvRelatedProducts = findViewById(R.id.rvRelatedProducts);
 
         llctnComments = findViewById(R.id.llctnComments);
         txt_view_comment_all = findViewById(R.id.txt_view_comment_all);
@@ -490,11 +551,18 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         productDetailPresenter.onDestroy();
+    }
+
+    @Override//Sản phẩm liên quan onClick
+    public void onRelatedProductItemClick(int position) {
+        Intent intent = getIntent();
+        intent.putExtra(KEY_RELEASE_TO, products.get(position).getId());
+        finish();
+        startActivity(intent);
     }
 }
 
