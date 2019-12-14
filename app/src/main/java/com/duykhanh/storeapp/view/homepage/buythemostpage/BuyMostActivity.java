@@ -19,7 +19,7 @@ import com.duykhanh.storeapp.model.Product;
 import com.duykhanh.storeapp.model.SlideHome;
 import com.duykhanh.storeapp.presenter.home.HomePresenter;
 import com.duykhanh.storeapp.presenter.home.ProductListContract;
-import com.duykhanh.storeapp.view.MainActivity;
+import com.duykhanh.storeapp.view.order.OrderActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,9 +122,8 @@ public class BuyMostActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.imgbtnSizeShop:
-                Intent iBuyProduct = new Intent(BuyMostActivity.this, MainActivity.class);
-                setResult(RESULT_OK, iBuyProduct);
-                finish();
+                Intent iBuyProduct = new Intent(BuyMostActivity.this, OrderActivity.class);
+                startActivity(iBuyProduct);
                 break;
         }
     }
@@ -174,7 +173,12 @@ public class BuyMostActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void sendCountProduct(int countProduct) {
-//        txt_size_cart.setText(countProduct);
+        if (countProduct != 0) {
+            txt_size_cart.setVisibility(View.VISIBLE);
+        } else {
+            txt_size_cart.setVisibility(View.GONE);
+        }
+        txt_size_cart.setText("" + countProduct);
     }
 
     @Override

@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.order.OrderActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbOrderActivity"
+        style="@style/LightTintToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giỏ hàng"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/mediumText"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
     <FrameLayout
         android:id="@+id/flOrderContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tbOrderActivity" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

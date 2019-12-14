@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -89,6 +90,7 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
     int countClick = 0;
 
     CommentContract.Presenter presenter;
+    RelativeLayout pb_load_cm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +141,7 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
         rcl_image_comment = findViewById(R.id.rcl_image_comment);
         ed_title_comment = findViewById(R.id.ed_title_comment);
         ed_write_comment = findViewById(R.id.ed_write_comment);
+        pb_load_cm = findViewById(R.id.pb_load_cm);
 
         ln_image_comment = findViewById(R.id.ln_image_comment);
         btn_send_comment = findViewById(R.id.btn_send_comment);
@@ -161,6 +164,7 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
             case R.id.btn_send_comment:
                 if (validateFormContent()) {
                     onRequestDataFormServer();
+                    pb_load_cm.setVisibility(View.VISIBLE);
                 }
                 break;
             case R.id.img_commentProduct:
@@ -269,6 +273,7 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
             }
         });
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

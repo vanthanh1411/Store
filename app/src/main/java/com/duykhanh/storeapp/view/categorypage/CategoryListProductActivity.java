@@ -24,6 +24,7 @@ import com.duykhanh.storeapp.model.Product;
 import com.duykhanh.storeapp.presenter.category.CategoryProductListContract;
 import com.duykhanh.storeapp.presenter.category.CategoryProductListPresenter;
 import com.duykhanh.storeapp.view.MainActivity;
+import com.duykhanh.storeapp.view.order.OrderActivity;
 import com.ligl.android.widget.iosdialog.IOSSheetDialog;
 
 import java.util.ArrayList;
@@ -236,16 +237,8 @@ public class CategoryListProductActivity extends AppCompatActivity implements Ca
                 finish();
                 break;
             case R.id.imgbtnSizeShop:
-                Intent iViewProductCart = new Intent(CategoryListProductActivity.this, MainActivity.class);
-                iViewProductCart.putExtra("KEY_START_CATEGORY_PRODUCT_CART", KEY_DATA_CATEGORY_PRODUCT_CART);
-                setResult(RESULT_OK, iViewProductCart);
-                finish();
-                break;
-            case R.id.edtFind:
-                Intent iViewProductSearch = new Intent(CategoryListProductActivity.this, MainActivity.class);
-                iViewProductSearch.putExtra("KEY_START_CATEGORY_PRODUCT_SEARCH", KEY_DATA_CATEGORY_PRODUCT_SEARCH);
-                setResult(RESULT_OK, iViewProductSearch);
-                finish();
+                Intent iViewProductCart = new Intent(CategoryListProductActivity.this, OrderActivity.class);
+                startActivity(iViewProductCart);
                 break;
             case R.id.btn_filter_price:
                 dialogSortBuy();

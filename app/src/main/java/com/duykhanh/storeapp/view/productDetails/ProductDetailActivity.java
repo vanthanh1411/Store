@@ -207,7 +207,9 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         }
         //Chuyển sang màn hình giỏ hàng
         if (isBuyNow) {
-            startActivity(new Intent(this, OrderActivity.class));
+            Intent cartIntent = new Intent(ProductDetailActivity.this, OrderActivity.class);
+            cartIntent.putExtra("dcm",1);
+            startActivity(cartIntent);
         }
     }
 
@@ -277,20 +279,9 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
                 addProductToCart();
                 break;
             case R.id.imgbtnShopping:
-                startActivity(new Intent(ProductDetailActivity.this, OrderActivity.class));
-                if (KEY_DATA_HOME_TO_DETAIL_PRODUCT == dataStartActivity) {
-                    Intent iHome = new Intent(ProductDetailActivity.this, MainActivity.class);
-                    setResult(RESULT_OK, iHome);
-                    finish();
-                    return;
-                }
-
-                if (KEY_DATA_CATEGORY_TO_DETAIL_PRODUCT == dataStartActivity) {
-                    Intent iCategory = new Intent(ProductDetailActivity.this, CategoryListProductActivity.class);
-                    setResult(RESULT_OK, iCategory);
-                    finish();
-                    return;
-                }
+                Intent cartIntent = new Intent(ProductDetailActivity.this, OrderActivity.class);
+                cartIntent.putExtra("dcm",1);
+                startActivity(cartIntent);
                 break;
             case R.id.btnToComment:
                 productDetailPresenter.requestCurrentUser();
@@ -561,7 +552,6 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
     public void onRelatedProductItemClick(int position) {
         Intent intent = getIntent();
         intent.putExtra(KEY_RELEASE_TO, products.get(position).getId());
-        finish();
         startActivity(intent);
     }
 }

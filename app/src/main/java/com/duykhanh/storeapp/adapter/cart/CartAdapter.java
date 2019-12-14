@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.duykhanh.storeapp.R;
 import com.duykhanh.storeapp.model.CartItem;
+import com.duykhanh.storeapp.utils.Formater;
 import com.duykhanh.storeapp.view.order.cart.CartFragment;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         holder.ivCartImage.setImageBitmap(BitmapFactory.decodeByteArray(cartItem.getImage(), 0, cartItem.getImage().length));
         holder.tvCartName.setText(cartItem.getName());
-        holder.tvCartTotal.setText("Thanh toán: " + cartItem.getQuantity() * cartItem.getPrice() + " đ");
+        holder.tvCartTotal.setText("Thanh toán: " + Formater.formatMoney((int)(cartItem.getQuantity() * cartItem.getPrice())) + " đ");
         holder.tvCartQuantity.setText(cartItem.getQuantity() + "");
         holder.tvCartStorage.setText("Tồn kho: " + cartItem.getStorage());
 

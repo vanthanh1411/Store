@@ -1,6 +1,7 @@
 package com.duykhanh.storeapp.view.order.payment;
 
 import android.annotation.SuppressLint;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +31,7 @@ import com.duykhanh.storeapp.utils.Formater;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class PaymentActivity extends AppCompatActivity implements View.OnClickListener, PaymentContract.View {
     final String TAG = this.getClass().toString();
@@ -37,6 +40,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     User user;
     float pay;
 
+    Toolbar tbPayment;
     RecyclerView rvBuyingProducts;
     TextView tvName, tvAddress, tvPhone, tvTotalPay;
     EditText etNewName, etNewAddress, etNewPhone;
@@ -58,6 +62,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         initView();
         initComponent();
         settingRecyclerView();
+        settingToolbar();
         total = 0;
         //Lấy thông tin người dùng
         presenter.requestCurrentUser();
@@ -192,6 +197,20 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
         rvBuyingProducts.setAdapter(adapter);
     }
 
+    private void settingToolbar() {
+        setSupportActionBar(tbPayment);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        tbPayment.getNavigationIcon().setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void initComponent() {
         //Formater
         formater = new Formater();
@@ -206,6 +225,7 @@ public class PaymentActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initView() {
+        tbPayment = findViewById(R.id.tbPayment);
         tvName = findViewById(R.id.tvPUserName);
         tvAddress = findViewById(R.id.tvPUserAddress);
         tvPhone = findViewById(R.id.tvPUserPhone);

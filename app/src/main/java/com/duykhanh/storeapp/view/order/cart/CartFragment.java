@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,15 +32,18 @@ import com.duykhanh.storeapp.view.userpage.account.AccountActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CartFragment extends Fragment implements CartContract.View, OnCartItemClickListener, View.OnClickListener {
     final String TAG = this.getClass().toString();
     int total;
     List<CartItem> cartItems;
+    int orderNo = 0;
 
     CartAdapter cartAdapter;
     LinearLayoutManager layoutManager;
 
+    Toolbar tbCart;
     View view;
     LinearLayout llctnCartProductRequire;
     RecyclerView rvCart;
@@ -59,6 +64,12 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
         initComponent();
         settingCartRecyclerView();
 
+        Bundle args = getArguments();
+        if (args != null){
+            orderNo = args.getInt("dcm", 0);
+        }
+        Log.d(TAG, "onCreateView: detail" + orderNo);
+
         btnPay.setOnClickListener(this);
         return view;
     }
@@ -68,6 +79,13 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
         Log.d(TAG, "onResume: ");
         super.onResume();
         presenter.requestCartItems();
+
+        if (orderNo != 1) {
+            tbCart.setVisibility(View.VISIBLE);
+            settingToolbar();
+        } else {
+            tbCart.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -178,6 +196,7 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
     }
 
     private void initView() {
+        tbCart = view.findViewById(R.id.tbCart);
         llctnCartProductRequire = view.findViewById(R.id.llctnCartProductRequire);
         rvCart = view.findViewById(R.id.rcl_cart);
         pbLoading = view.findViewById(R.id.pbCartsLoading);
@@ -185,6 +204,12 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
         btnPay = view.findViewById(R.id.btnToPay);
         btnToProducts = view.findViewById(R.id.btnToProducts);
     }
+
+    private void settingToolbar() {
+        ((AppCompatActivity) getActivity()).setSupportActionBar(tbCart);
+        Objects.requireNonNull(((AppCompatActivity) getActivity()).getSupportActionBar()).setDisplayShowTitleEnabled(false);
+    }
+
 
     @Override
     public void showProgress() {

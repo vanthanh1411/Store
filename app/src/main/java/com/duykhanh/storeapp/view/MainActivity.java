@@ -57,21 +57,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-            if(resultCode == RESULT_OK) {
-                int key_cart = data.getIntExtra("KEY_START_CATEGORY_PRODUCT_CART",0);
-                int key_find = data.getIntExtra("KEY_START_CATEGORY_PRODUCT_SEARCH",0);
-
-                if(key_cart == KEY_DATA_CATEGORY_PRODUCT_CART){
-                    Fragment nCart = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                    NavController c = NavHostFragment.findNavController(nCart);
-                    c.navigate(R.id.navCart);
-                }
-                if(key_find == KEY_DATA_CATEGORY_PRODUCT_SEARCH){
-                    Fragment nSearch = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
-                    NavController cSearch = NavHostFragment.findNavController(nSearch);
-                    cSearch.navigate(R.id.navSearch);
-                }
-            }
 
     }
 }

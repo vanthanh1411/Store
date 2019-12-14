@@ -11,14 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterViewFlipper;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.NestedScrollingChild;
 import androidx.core.view.ViewCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
@@ -70,9 +67,10 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
 
     // Presenter interface dùng cho view
     private static ProductListContract.Presenter mPresenter;
+    public int coundLoad = 0;
+    public int nestedScrollLoadCount = 0;
     // Khởi tạo view
     View view;
-
     /*
      * Các view hiển thị trong màn hình home
      */
@@ -80,16 +78,13 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
     NestedScrollView nestedScrollViewHome; // Chứa toàn bộ view lấy out trừ toolbar
     SwipeRefreshLayout swipeRefreshLayoutHome;// Refresh lại layout khi kéo màn hình xuống
     RecyclerView recyclerViewProduct, rcl_view_product, rcl_buy_product; // Hiển thị danh sách các sản phẩm
-
     // Slide show hiển thị banner thông báo
     SliderView sliderView;
-
     /*
      * Xem thêm phần lượt xem nhiều nhất
      * Xem thêm phần lượt mua nhiều nhất
      */
     TextView txt_view_all, txt_buy_all;
-
     /*
      * Các view năm trên thanh toolbar bao gồm
      * Nút tìm kiếm
@@ -99,7 +94,6 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
     TextView edFind;
     ImageButton btnCartShop;
     TextView txtSizeShoppingHome;
-
     /*
      * Khởi tạo các adapter cần thiết để xây dựng giao diện
      */
@@ -107,16 +101,17 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
     ProductAdapter productAdapter;
     ViewProductAdapter viewProductAdapter;
     BuyProductAdapter buyProductAdapter;
-
     /*
      * Kiểu danh sách hiển thị trên recyclerview
      */
     GridLayoutManager mLayoutManager;
     LinearLayoutManager viewLinearLayoutManager;
     LinearLayoutManager buyLinearLayoutManager;
-
     //Slideshow
     AdapterViewFlipper avfSlideshow;
+    int firstVisibleItem, visibleItemCount, totalItemCount;
+    int firstVisibleItem_view, visibleItemCount_view, totalItemCount_view;
+    int firstVisibleItem_buy, visibleItemCount_buy, totalItemCount_buy;
     /*
      * Danh sách sản phẩm:
      * + Lượt xem nhiều nhất
@@ -136,23 +131,15 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
     private int pageView = 0;
     private int pageBuy = 0;
     private int pageNo = 0;
-
     private int previousTotal = 0; // Tổng số item khi yêu cầu dữ liệu trên server
     private boolean loading = true; // Trạng thái load dữ liệu
     private int visibleThreshold = 4;//
-
     private int previousTotal_view = 0; // Tổng số item khi yêu cầu dữ liệu trên server
     private boolean loading_view = true; // Trạng thái load dữ liệu
     private int visibleThreshold_view = 4;//
-
     private int previousTotal_buy = 0; // Tổng số item khi yêu cầu dữ liệu trên server
     private boolean loading_buy = true; // Trạng thái load dữ liệu
     private int visibleThreshold_buy = 4;//
-
-    int firstVisibleItem, visibleItemCount, totalItemCount;
-    int firstVisibleItem_view, visibleItemCount_view, totalItemCount_view;
-    int firstVisibleItem_buy, visibleItemCount_buy, totalItemCount_buy;
-
     private int pastVisiblesItems;
 
     public HomeFragment() {
@@ -207,7 +194,7 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
     private void initSlideShow() {
         slideHomes = new ArrayList<>();
 
-        slideshowAdapter = new SlideshowAdapter(getContext(),slideHomes);
+        slideshowAdapter = new SlideshowAdapter(getContext(), slideHomes);
         sliderView.setSliderAdapter(slideshowAdapter);
         sliderView.setIndicatorAnimation(IndicatorAnimations.WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION);
@@ -245,9 +232,9 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
         rcl_buy_product.setAdapter(buyProductAdapter);
 
         // Cấu hình danh sách sản phẩm gợi ý
-        ViewCompat.setNestedScrollingEnabled(recyclerViewProduct,false);
+        ViewCompat.setNestedScrollingEnabled(recyclerViewProduct, false);
         productList = new ArrayList<>();
-        mLayoutManager = new GridLayoutManager(getContext(),2);
+        mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerViewProduct.setLayoutManager(mLayoutManager);
         recyclerViewProduct.setItemAnimator(new DefaultItemAnimator());
         productAdapter = new ProductAdapter(this, productList);
@@ -302,13 +289,18 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
                 if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
                     Log.d(TAG, "onScrollChange: scrollY");
                     progressBarLoadProduct.setVisibility(View.VISIBLE);
-
-                    new Handler().postDelayed(new Runnable() {
+                    nestedScrollLoadCount++;
+                    if ((nestedScrollLoadCount - coundLoad) == 1) {
+                        new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 mPresenter.getMoreData(pageNo);
                             }
                         }, 1000);
+                    } else {
+                        nestedScrollLoadCount = 0;
+                        coundLoad = 0;
+                    }
                 }
             }
         });
@@ -390,6 +382,7 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
         productList.addAll(movieArrayList);
         productAdapter.notifyItemInserted(productList.size() - 1);
 
+        coundLoad++;
         pageNo++;
     }
 
