@@ -77,7 +77,7 @@ public class OrderDetailsActivity extends AppCompatActivity implements OrderDeta
         tvOrderDate.setText(Html.fromHtml("<b>Ngày đặt hàng:</b> " + Formater.formatDate(order.getDate())));
         tvOrderStatus.setText(Html.fromHtml("<b>Trạng thái:</b> " + Formater.statusIntToString(order.getStatus())));
         tvOrderAddress.setText(order.getAddress());
-        tvTotal.setText(Formater.formatMoney((int) order.getTotal()));
+        tvTotal.setText(Formater.formatMoney((int) order.getTotal()) + " đ");
     }
 
     @Override

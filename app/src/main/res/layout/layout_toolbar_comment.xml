@@ -33,7 +33,7 @@
                 android:layout_toRightOf="@+id/img_back_comment"
                 android:text="Bình luận"
                 android:textColor="@color/colorWhite"
-                android:textSize="22sp"
+                android:textSize="@dimen/mediumText"
                 android:textStyle="bold" />
 
         </RelativeLayout>

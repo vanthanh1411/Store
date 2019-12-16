@@ -208,7 +208,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
         //Chuyển sang màn hình giỏ hàng
         if (isBuyNow) {
             Intent cartIntent = new Intent(ProductDetailActivity.this, OrderActivity.class);
-            cartIntent.putExtra("dcm",1);
+            cartIntent.putExtra("CartInOrderActivity",1);
             startActivity(cartIntent);
         }
     }
@@ -280,7 +280,7 @@ public class ProductDetailActivity extends AppCompatActivity implements AppBarLa
                 break;
             case R.id.imgbtnShopping:
                 Intent cartIntent = new Intent(ProductDetailActivity.this, OrderActivity.class);
-                cartIntent.putExtra("dcm",1);
+                cartIntent.putExtra("CartInOrderActivity",1);
                 startActivity(cartIntent);
                 break;
             case R.id.btnToComment:

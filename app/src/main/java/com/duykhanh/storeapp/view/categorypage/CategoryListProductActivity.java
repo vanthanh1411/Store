@@ -32,7 +32,6 @@ import java.util.List;
 
 import static com.duykhanh.storeapp.utils.Constants.KEY_CATEGORY;
 import static com.duykhanh.storeapp.utils.Constants.KEY_DATA_CATEGORY_PRODUCT_CART;
-import static com.duykhanh.storeapp.utils.Constants.KEY_DATA_CATEGORY_PRODUCT_SEARCH;
 import static com.duykhanh.storeapp.utils.Constants.KEY_TITLE;
 
 /**
@@ -237,8 +236,9 @@ public class CategoryListProductActivity extends AppCompatActivity implements Ca
                 finish();
                 break;
             case R.id.imgbtnSizeShop:
-                Intent iViewProductCart = new Intent(CategoryListProductActivity.this, OrderActivity.class);
-                startActivity(iViewProductCart);
+                Intent cartIntent = new Intent(getApplication(), OrderActivity.class);
+                cartIntent.putExtra("CartInOrderActivity", 1);
+                startActivity(cartIntent);
                 break;
             case R.id.btn_filter_price:
                 dialogSortBuy();

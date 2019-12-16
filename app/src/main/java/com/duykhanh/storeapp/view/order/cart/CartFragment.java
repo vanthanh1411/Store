@@ -64,11 +64,11 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
         initComponent();
         settingCartRecyclerView();
 
+        //Xác định chuyển sang Cart trong OrderActivity
         Bundle args = getArguments();
         if (args != null){
-            orderNo = args.getInt("dcm", 0);
+            orderNo = args.getInt("CartInOrderActivity", 0);
         }
-        Log.d(TAG, "onCreateView: detail" + orderNo);
 
         btnPay.setOnClickListener(this);
         return view;
@@ -79,7 +79,8 @@ public class CartFragment extends Fragment implements CartContract.View, OnCartI
         Log.d(TAG, "onResume: ");
         super.onResume();
         presenter.requestCartItems();
-
+        //Hiện nút Back
+        Log.d(TAG, "onResume: cartNo" + orderNo);
         if (orderNo != 1) {
             tbCart.setVisibility(View.VISIBLE);
             settingToolbar();

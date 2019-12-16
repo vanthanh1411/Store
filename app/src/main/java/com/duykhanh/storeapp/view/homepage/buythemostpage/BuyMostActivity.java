@@ -20,6 +20,7 @@ import com.duykhanh.storeapp.model.SlideHome;
 import com.duykhanh.storeapp.presenter.home.HomePresenter;
 import com.duykhanh.storeapp.presenter.home.ProductListContract;
 import com.duykhanh.storeapp.view.order.OrderActivity;
+import com.duykhanh.storeapp.view.productDetails.ProductDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -122,8 +123,9 @@ public class BuyMostActivity extends AppCompatActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.imgbtnSizeShop:
-                Intent iBuyProduct = new Intent(BuyMostActivity.this, OrderActivity.class);
-                startActivity(iBuyProduct);
+                Intent cartIntent = new Intent(BuyMostActivity.this, OrderActivity.class);
+                cartIntent.putExtra("CartInOrderActivity",1);
+                startActivity(cartIntent);
                 break;
         }
     }

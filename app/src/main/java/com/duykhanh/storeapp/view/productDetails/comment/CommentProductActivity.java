@@ -165,6 +165,7 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
                 if (validateFormContent()) {
                     onRequestDataFormServer();
                     pb_load_cm.setVisibility(View.VISIBLE);
+                    btn_send_comment.setEnabled(false);
                 }
                 break;
             case R.id.img_commentProduct:
@@ -412,6 +413,10 @@ public class CommentProductActivity extends AppCompatActivity implements View.On
     public boolean validateFormContent() {
         if (ed_write_comment.getText().toString().equals("")) {
             Toast.makeText(this, "Vui lòng nhập nội dung bài viết", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(countRatingbar == 0){
+            Toast.makeText(this, "Vui lòng chọn số sao cho bình luận", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

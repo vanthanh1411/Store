@@ -50,7 +50,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimenPaddingVertical_16dp"
+                android:layout_marginStart="@dimen/dimenPaddingVertical_16dp"
+                android:layout_marginTop="@dimen/dimenPaddingVertical_16dp"
+                android:layout_marginEnd="@dimen/dimenPaddingVertical_16dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -80,10 +82,45 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_marginBottom_16dp"
+                android:layout_marginStart="@dimen/layout_marginBottom_16dp"
+                android:layout_marginEnd="@dimen/layout_marginBottom_16dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/title_comment">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_title_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/content_comment">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ed_write_comment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/ln_image_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_marginBottom_16dp"
+                android:layout_marginTop="@dimen/layout_marginBottom_16dp"
+                android:layout_marginStart="@dimen/layout_marginBottom_16dp"
+                android:layout_marginEnd="@dimen/layout_marginBottom_16dp"
                 android:background="@drawable/bg_image_comment"
                 android:orientation="vertical">
 
@@ -112,47 +149,17 @@
                 android:orientation="horizontal" />
 
             <!--END image product comment-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/layout_marginBottom_16dp"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/title_comment">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/ed_title_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/content_comment">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/ed_write_comment"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
 
     <RelativeLayout
         android:id="@+id/pb_load_cm"
-        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/colorBlackAccentTransparency"
         android:elevation="3dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:visibility="gone">
 
         <ProgressBar
             android:layout_width="wrap_content"

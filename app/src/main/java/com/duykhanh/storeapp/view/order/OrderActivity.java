@@ -58,7 +58,7 @@ public class OrderActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
         cartFragment = new CartFragment();
         Bundle args = new Bundle();
-        args.putInt("dcm", getIntent().getExtras().getInt("dcm"));
+        args.putInt("CartInOrderActivity", getIntent().getExtras().getInt("CartInOrderActivity"));
         cartFragment.setArguments(args);
     }
 }

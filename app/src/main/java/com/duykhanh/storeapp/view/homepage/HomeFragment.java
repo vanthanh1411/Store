@@ -404,6 +404,7 @@ public class HomeFragment extends Fragment implements ProductListContract.View,
 
     @Override
     public void sendDataToSlideShowHome(List<SlideHome> slideHomeList) {
+        slideHomes.clear();
         slideHomes.addAll(slideHomeList);
         slideshowAdapter.notifyDataSetChanged();
     }

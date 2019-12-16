@@ -102,8 +102,9 @@ public class SaleActivity extends AppCompatActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.btnShop:
-                Intent iOders = new Intent(SaleActivity.this, OrderActivity.class);
-                startActivity(iOders);
+                Intent cartIntent = new Intent(SaleActivity.this, OrderActivity.class);
+                cartIntent.putExtra("CartInOrderActivity",1);
+                startActivity(cartIntent);
                 break;
         }
     }
